@@ -12,3 +12,23 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+
+code {
+	font-size: 0.8em;
+}
+
+#redditDescription h1 {
+	font-size: 1.5em;
+}
+
+#redditDescription h2 {
+	font-size: 1.3em;
+}
+
+#redditDescription h3 {
+	font-size: 1.1em;
+}
+
+#redditDescription pre {
+	background: #ddd;
+}
