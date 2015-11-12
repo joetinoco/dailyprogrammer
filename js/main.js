@@ -46,23 +46,37 @@
 		// Parse the header comment for metadata and apply it to the card
 		metadata = parseHeaderMetadata(source);
 		Object.keys(metadata).forEach(function(k){
+			
 			replaceTemplate(card, k, metadata[k]);
 			if (k === 'Demo link') card.find('.demolink').toggleClass('hide');
+		
 		});
 
 		replaceTemplate(card, 'Solution link', '?' + subPath);
-		card.toggleClass('hide').appendTo('.container');
+		card.toggleClass('hide').appendTo('#mainContainer');
 
 	}
 
 	// Submission page, with challenge description and source code
 	function displaySolution(source){
+		
+		var metadata = parseHeaderMetadata(source);
+		var solutionDiv = $('#solution');
+
+		replaceTemplate($('nav'), 'Challenge name', metadata['Challenge name']);
+		replaceTemplate(solutionDiv, 'Level', metadata['Level']);
+		
 
 		// Read challenge description (from Reddit)
-		$.getJSON(parseHeaderMetadata(source)['Reddit thread'] + '.json', function(reddit) {
-			console.log(reddit[0].data.children[0].data.selftext_html);
+		$.getJSON(metadata['Reddit thread'] + '.json', function(reddit) {
+			
 			$('#redditDescription').html(_.unescape(reddit[0].data.children[0].data.selftext_html));
-		});
+		
+		}).fail(function() {
+	    
+	    $('#redditDescription').html(metadata['Objective']);
+	  
+	  });
 
 		// Source code
 		source = source.replace(HEADER_COMMENT_REGEX, '');
@@ -73,10 +87,13 @@
 
 		// Turn on code highlighter
 		$('pre code').each(function(i, block) {
+	    
 	    hljs.highlightBlock(block);
+	 
 	  });
 
-	  $('.solution').toggleClass('hide')
+	  $('#solution').toggleClass('hide');
+	  $('ul.tabs').tabs();
 
 	}
 
@@ -89,6 +106,8 @@
 		var subPathList = Object.keys(submissions);
 
 		if (subPathList.indexOf(subRequest) === -1){
+
+			replaceTemplate($('nav'), 'Challenge name', 'Daily Programmer Challenges');
 
 			// Display 'home page': a list of all submissions
 			subPathList.forEach(function(subPath, subIndex){
