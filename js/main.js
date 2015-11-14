@@ -65,6 +65,7 @@
 
 		replaceTemplate($('nav'), 'Challenge name', metadata['Challenge name']);
 		replaceTemplate(solutionDiv, 'Level', metadata['Level']);
+		replaceTemplate(solutionDiv, 'Objective', metadata['Objective']);
 		
 
 		// Read challenge description (from Reddit)
@@ -93,7 +94,9 @@
 	  });
 
 	  $('#solution').toggleClass('hide');
-	  $('ul.tabs').tabs();
+	  // Materialize.css initializations
+		$('.collapsible').collapsible({ accordion : false });
+		$('ul.tabs').tabs();
 
 	}
 

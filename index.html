@@ -7,7 +7,7 @@
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/highlight/agate.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/highlight/default.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 
@@ -38,35 +38,43 @@
         </div>
 
         <!-- Solution display template -->
-        <div id="solution" class="row hide">
-          <div class="row">
-            <div class="col s12">
-              <a href="{Reddit thread}">Reddit thread</a>
-              <div class="chip right">{Level}</div>
-            </div>
+        <div id="solution" class="hide">
+          <div class="section">
+            <div class="chip right">{Level}</div>
+            <p>{Objective} <a href="{Reddit thread}">Reddit thread</a></p>
           </div>
-          <!-- Tab bar -->
-          <div class="col s12">
-            <ul class="tabs z-depth-1">
-              <li class="tab col s3"><a class="active blue-text" href="#tabDescription">Challenge description</a></li>
-              <li class="tab col s3"><a class="blue-text" href="#solutionCode">Solution code</a></li>
-            </ul>
-          </div>
-          <!-- Reddit description -->
-          <div id="tabDescription" class="col s12 ">
-            <div id="redditDescription" class="section">
-              Loading...
-            </div>
-          </div>
-          <!-- Solution code + console output -->
-          <div id="solutionCode" class="col card-panel blue-grey darken-4 s12">
-            <pre><code class="javascript blue-grey darken-4">{Solution code}</code></pre>
-            <div class="card-panel">
-              <h6>Console output</h6>
-              <div class="divider"></div>
-              <pre><code id="consoleOutput"></code></pre>
-            </div>
-          </div>
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header"><i class="material-icons">code</i>Solution</div>
+              <div id="solutionCode" class="collapsible-body">
+                
+                  <pre>
+                    <code class="javascript">{Solution code}
+                    </code>
+                  </pre>
+                  
+                  <div id="console">
+                    <div class="section">
+                      <strong>Console output</strong>
+                      <div class="divider"></div>
+                      <pre><code id="consoleOutput"></code></pre>
+                    </div>
+                  </div>
+                
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">description</i>Detailed challenge description (from Reddit)</div>
+              <div class="collapsible-body">
+                <!-- Reddit description -->
+                <div class="row">
+                  <div id="tabDescription" class="col s10 offset-s1">
+                    <div id="redditDescription" class="section">Loading...</div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
 
     </div>

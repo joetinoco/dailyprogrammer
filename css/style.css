@@ -17,6 +17,10 @@ code {
 	font-size: 0.8em;
 }
 
+pre, #console {
+	padding: 0 1em;
+}
+
 #redditDescription h1 {
 	font-size: 1.5em;
 }
