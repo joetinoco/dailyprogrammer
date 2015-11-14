@@ -41,11 +41,11 @@
         <div id="solution" class="hide">
           <div class="section">
             <div class="chip right">{Level}</div>
-            <p>{Objective} <a href="{Reddit thread}">Reddit thread</a></p>
+            <p>{Objective}</p>
           </div>
           <ul class="collapsible" data-collapsible="accordion">
             <li>
-              <div class="collapsible-header"><i class="material-icons">code</i>Solution</div>
+              <div class="collapsible-header active"><i class="material-icons">code</i>Solution</div>
               <div id="solutionCode" class="collapsible-body">
                 
                   <pre>
@@ -54,10 +54,10 @@
                   </pre>
                   
                   <div id="console">
-                    <div class="section">
+                    <div id="consoleOutput" class="section">
                       <strong>Console output</strong>
                       <div class="divider"></div>
-                      <pre><code id="consoleOutput"></code></pre>
+                      <pre id="consoleOutput_text"></pre>
                     </div>
                   </div>
                 

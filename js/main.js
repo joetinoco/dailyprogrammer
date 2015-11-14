@@ -66,7 +66,6 @@
 		replaceTemplate($('nav'), 'Challenge name', metadata['Challenge name']);
 		replaceTemplate(solutionDiv, 'Level', metadata['Level']);
 		replaceTemplate(solutionDiv, 'Objective', metadata['Objective']);
-		
 
 		// Read challenge description (from Reddit)
 		$.getJSON(metadata['Reddit thread'] + '.json', function(reddit) {
@@ -75,11 +74,11 @@
 		
 		}).fail(function() {
 	    
-	    $('#redditDescription').html(metadata['Objective']);
+	    $('#redditDescription').html('See <a target="_blank" href="' + metadata['Reddit thread'] + '">the Reddit link</a>');
 	  
 	  });
 
-		// Source code
+		// display source code
 		source = source.replace(HEADER_COMMENT_REGEX, '');
 		var sourceLines = source.split('\n');
 		while (sourceLines[0].charCodeAt(0) === 13) sourceLines.splice(0, 1); // Trim first blank lines
@@ -94,6 +93,13 @@
 	  });
 
 	  $('#solution').toggleClass('hide');
+
+	  // Run source code to display the output
+		$.get('js/consoleoverride.js', function(){ // Override console output
+			eval(source);
+		});
+		
+
 	  // Materialize.css initializations
 		$('.collapsible').collapsible({ accordion : false });
 		$('ul.tabs').tabs();
