@@ -1,7 +1,7 @@
 /*
 	Challenge name: Heightmap of boxes
     Level: Intermediate
-	Objective: Paint an ASCII drawing of boxes with their relative height.
+	Objective: Given an ASCII drawing of nested boxes, create a program that fills each box with a character pattern based on their relative height.
 	Reddit thread: https://www.reddit.com/r/dailyprogrammer/comments/3pnd3t/20151021_challenge_237_intermediate_heighmap_of/
 */
 

@@ -1,7 +1,7 @@
 /*
     Challenge name: Scoring a bowling game
     Level: Intermediate
-	Objective: Determine a bowling score from a string representing a score sheet, i.e., 'X -/ X 5- 8/ 9- X 81 1- 4/X'
+	Objective: Determine a bowling score from a string representing a score sheet, i.e., 'X -/ X 5- 8/ 9- X 81 1- 4/X', where a / represents a spare and an X represents a strike. The program must take into account all bowling rules, including doubling points for the next ball if the previous one was a spare, and doubling the next two balls if the previous one was a strike.
 	Reddit thread: https://www.reddit.com/r/dailyprogrammer/comments/3ntsni/20151007_challenge_235_intermediate_scoring_a/
 */
 

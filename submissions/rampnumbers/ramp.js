@@ -1,7 +1,7 @@
 /*
 	Challenge name: Ramp numbers
     Level: Mini-challenge
-	Objective: Determine the number of 'ramp numbers' (i.e., numbers whose digits from left to right either only rise or stay the same, like 1234) less than a given number 'n'.
+	Objective: A ramp number is a number whose digits from left to right either only rise or stay the same. 1234 is a ramp number as is 1124. 1032 is not. Challenge: determine the number of 'ramp numbers' less than a given number 'n'.
 	Reddit thread: https://www.reddit.com/r/dailyprogrammer/comments/3o4tpz/weekly_24_mini_challenges/cw5d9ne?context=10000
 */
 
@@ -16,3 +16,5 @@ function ramp(input){
     }
     return count;
 }
+
+console.log(ramp(99999));

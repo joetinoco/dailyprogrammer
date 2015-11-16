@@ -1,7 +1,7 @@
 /*
-    Challenge name: Zero-sum Game of Thress
+    Challenge name: Zero-sum Game of Threes
     Level: Intermediate
-    Objective: A variation of the 'Game of Threes' where you can add any of any of [-2, -1, 1, 2] to reach a multiple of 3, and the sum of all those modifiers must equal 0. The code must handle very large integer inputs in a reasonable time.
+    Objective: A variation of the 'Game of Threes' where you can add any of [-2, -1, 1, 2] to reach a multiple of 3, and the sum of all those modifiers must equal 0. The code must handle very large integer inputs in a reasonable time.
     Reddit thread: https://www.reddit.com/r/dailyprogrammer/comments/3rhzdj/20151104_challenge_239_intermediate_a_zerosum/
 */
 

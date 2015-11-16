@@ -21,4 +21,4 @@ function fibonacish(x){
     return sequence(0, divisor, x);
 }
 
-console.log(fibonacish(123456789));
+console.log(fibonacish(578));

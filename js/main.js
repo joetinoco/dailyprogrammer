@@ -58,7 +58,7 @@
 	}
 
 	// Submission page, with challenge description and source code
-	function displaySolution(source){
+	function displaySolution(subPath, source){
 		
 		var metadata = parseHeaderMetadata(source);
 		var solutionDiv = $('#solution');
@@ -94,15 +94,19 @@
 
 	  $('#solution').toggleClass('hide');
 
+	  console.log($(location).attr('href'));
+    console.log($(location).attr('pathname'));
+
 	  // Run source code to display the output
-		$.get('js/consoleoverride.js', function(){ // Override console output
-			eval(source);
-		});
+		$.get('js/consoleoverride.js', function(){
+			
+			source = source.replace(/[\'\"](.+\.txt)[\'\"]/gm, '\'submissions/' + subPath + '/$1\''); // Adjust eventual input file names to the correct path
+			eval(source); // Don't try this at home
 		
+		});
 
 	  // Materialize.css initializations
 		$('.collapsible').collapsible({ accordion : false });
-		$('ul.tabs').tabs();
 
 	}
 
@@ -134,7 +138,7 @@
 			// Display an individual submission
 			$.get(BASE_PATH + subRequest + '/' + submissions[subRequest], function(source){
 
-				displaySolution(source);
+				displaySolution(subRequest, source);
 
 			},'text');
 
