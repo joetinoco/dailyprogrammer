@@ -83,7 +83,8 @@
 		var sourceLines = source.split('\n');
 		while (sourceLines[0].charCodeAt(0) === 13) sourceLines.splice(0, 1); // Trim first blank lines
 		source = sourceLines.join('');
-		replaceTemplate($('#solutionCode'), 'Solution code', source);
+		$('#solutionCode').text(source);
+
 
 		// Turn on code highlighter
 		$('pre code').each(function(i, block) {

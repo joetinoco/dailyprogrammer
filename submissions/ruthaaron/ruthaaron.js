@@ -1,8 +1,8 @@
 /*
     Challenge name: Ruth-Aaron pairs
     Level: Easy
-	Objective: Determine if a pair of numbers is a valid Ruth-Aaron pair, i.e., a pair where the sum of its distinct prime factors are equal.
-	Reddit thread: https://www.reddit.com/r/dailyprogrammer/comments/3ntsni/20151007_challenge_235_intermediate_scoring_a/
+	Objective: Determine if a pair of numbers is a valid Ruth-Aaron pair, i.e., a pair of consecutive integers where the sum of its distinct prime factors are equal. E.g.: 714 (2 * 3 * 7 * 17) and 715 (5 * 11 * 13).
+	Reddit thread: https://www.reddit.com/r/dailyprogrammer/comments/3nkanm/20151005_challenge_235_easy_ruthaaron_pairs/
 */
 
 function isRuthAaronPair(n1, n2){
