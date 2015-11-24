@@ -24,8 +24,11 @@
 		.forEach(function(line){
 			
 			m = /^\s*(.+?):\s*(.+)/g.exec(line);
+
 			if (m) {
+			
 				metadata[m[1]] = m[2];
+			
 			}
 			
 		});
@@ -52,7 +55,7 @@
 		
 		});
 
-		replaceTemplate(card, 'Solution link', '?' + subPath);
+		replaceTemplate(card, 'Solution link', '?' + subPath); // Links to individual submissions
 		card.toggleClass('hide').appendTo('#mainContainer');
 
 	}
@@ -95,10 +98,7 @@
 
 	  $('#solution').toggleClass('hide');
 
-	  console.log($(location).attr('href'));
-    console.log($(location).attr('pathname'));
-
-	  // Run source code to display the output
+	  // Run source code and display console output in a div
 		$.get('js/consoleoverride.js', function(){
 			
 			source = source.replace(/[\'\"](.+\.txt)[\'\"]/gm, '\'submissions/' + subPath + '/$1\''); // Adjust eventual input file names to the correct path
