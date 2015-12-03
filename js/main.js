@@ -1,7 +1,7 @@
 (function () {
 	var BASE_PATH = 'submissions/';
 	var MANIFEST = '_manifest.json'; // List of the uploaded submissions
-	var HEADER_COMMENT_REGEX = new RegExp(/\/\*[^]+\*\//gm);
+	var HEADER_COMMENT_REGEX = new RegExp(/\/\*[\s\S]+\*\//);
 	var subRequest = decodeURIComponent(document.location.search.substr(1));
 
 	// ==================================================================
@@ -19,18 +19,19 @@
 	// Parse the header comment for metadata
 	function parseHeaderMetadata(source){
 		var metadata = {}, m, item;
+		//console.log(source.match(HEADER_COMMENT_REGEX));
 		source.match(HEADER_COMMENT_REGEX)[0]
 		.split('\n')
 		.forEach(function(line){
-			
-			m = /^\s*(.+?):\s*(.+)/g.exec(line);
+
+			m = /^\s*(.+?):\s*(.+)/.exec(line);
 
 			if (m) {
-			
+
 				metadata[m[1]] = m[2];
-			
+
 			}
-			
+
 		});
 
 		return metadata;
@@ -49,10 +50,10 @@
 		// Parse the header comment for metadata and apply it to the card
 		metadata = parseHeaderMetadata(source);
 		Object.keys(metadata).forEach(function(k){
-			
+
 			replaceTemplate(card, k, metadata[k]);
 			if (k === 'Demo link') card.find('.demolink').toggleClass('hide');
-		
+
 		});
 
 		replaceTemplate(card, 'Solution link', '?' + subPath); // Links to individual submissions
@@ -62,7 +63,7 @@
 
 	// Submission page, with challenge description and source code
 	function displaySolution(subPath, source){
-		
+
 		var metadata = parseHeaderMetadata(source);
 		var solutionDiv = $('#solution');
 
@@ -72,13 +73,13 @@
 
 		// Read challenge description (from Reddit)
 		$.getJSON(metadata['Reddit thread'] + '.json', function(reddit) {
-			
+
 			$('#redditDescription').html(_.unescape(reddit[0].data.children[0].data.selftext_html));
-		
+
 		}).fail(function() {
-	    
+
 	    $('#redditDescription').html('See <a target="_blank" href="' + metadata['Reddit thread'] + '">the Reddit link</a>');
-	  
+
 	  });
 
 		// display source code
@@ -91,19 +92,19 @@
 
 		// Turn on code highlighter
 		$('pre code').each(function(i, block) {
-	    
+
 	    hljs.highlightBlock(block);
-	 
+
 	  });
 
 	  $('#solution').toggleClass('hide');
 
 	  // Run source code and display console output in a div
 		$.get('js/consoleoverride.js', function(){
-			
+
 			source = source.replace(/[\'\"](.+\.txt)[\'\"]/gm, '\'submissions/' + subPath + '/$1\''); // Adjust eventual input file names to the correct path
 			eval(source); // Don't try this at home
-		
+
 		});
 
 	  // Materialize.css initializations
@@ -131,7 +132,7 @@
 					displayCard(subPath, source);
 
 				},'text');
-				
+
 			});
 
 		} else {
@@ -144,6 +145,6 @@
 			},'text');
 
 		}
-	
+
 	});
 })(jQuery);

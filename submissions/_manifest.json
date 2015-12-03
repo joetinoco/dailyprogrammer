@@ -1,4 +1,8 @@
 {
+	"fruitbasket": "fruitbasket.js",
+	"abundant": "abundant.js",
+	"rummikub": "rummikub.js",
+	"vhsrec": "vhsrec.js",
 	"funnyplant": "funnyplant.js",
 	"typoglycemia": "typoglycemia.js",
 	"gameofthrees2": "gameofthrees2.js",
